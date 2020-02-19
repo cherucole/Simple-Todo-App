@@ -9,6 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Home from '../screens/MainScreen';
 import Done from '../screens/Done';
+import Add from '../screens/AddItem';
 
 const DashboardTabNavigator = createBottomTabNavigator(
   {
@@ -51,6 +52,7 @@ const DashboardTabNavigator = createBottomTabNavigator(
 const MainNavigator = createStackNavigator(
   {
     DashboardTabNavigator: DashboardTabNavigator,
+    Add: Add,
   },
   {
     defaultNavigationOptions: {

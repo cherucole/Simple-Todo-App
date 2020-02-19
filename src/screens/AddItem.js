@@ -24,7 +24,11 @@ const AddItem = props => {
   };
   return (
     <View style={styles.mainContainer}>
-      <BackButton />
+      <BackButton
+        onPressBack={() => {
+          props.navigation.goBack();
+        }}
+      />
       <StatusBarHeader name="Add Items" />
       <KeyboardAvoidingView
         behavior="position"
