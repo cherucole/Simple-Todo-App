@@ -7,51 +7,68 @@ import {
   KeyboardAvoidingView,
   Button,
   TouchableHighlight,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Alert,
 } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
 import Colors from '../components/Colors';
+import BackButton from '../components/BackButton';
 
 const AddItem = props => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [time, setTime] = useState('');
-  const onSubmitHandler = () => {};
+  const onSubmitHandler = () => {
+    Alert.alert(title);
+  };
   return (
     <View style={styles.mainContainer}>
+      <BackButton />
       <StatusBarHeader name="Add Items" />
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="Title"
-          placeholderTextColor="grey"
-          autoCapitalize="none"
-          onChangeText={text => setTitle(text)}
-          value={title}
-        />
-        <TextInput
-          style={{...styles.input, ...{height: 160}}}
-          placeholder="Item Description"
-          placeholderTextColor="grey"
-          autoCapitalize="none"
-          onChangeText={text => setDescription(text)}
-          value={description}
-          multiline={true}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Time"
-          placeholderTextColor="grey"
-          autoCapitalize="none"
-          onChangeText={text => setTime(text)}
-          value={time}
-        />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={onSubmitHandler}
-          underlayColor="#99d9f4">
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableHighlight>
-      </View>
+      <KeyboardAvoidingView
+        behavior="position"
+        keyboardVerticalOffset={50}
+        enabled>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+          }}>
+          <View style={styles.container}>
+            <TextInput
+              style={styles.input}
+              placeholder="Title"
+              placeholderTextColor="grey"
+              autoCapitalize="none"
+              onChangeText={text => setTitle(text)}
+              value={title}
+            />
+            <TextInput
+              style={{...styles.input, ...{height: 160}}}
+              placeholder="Item Description"
+              placeholderTextColor="grey"
+              autoCapitalize="none"
+              onChangeText={text => setDescription(text)}
+              value={description}
+              multiline={true}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Time"
+              placeholderTextColor="grey"
+              autoCapitalize="none"
+              onChangeText={text => setTime(text)}
+              value={time}
+            />
+            <TouchableHighlight
+              style={styles.button}
+              onPress={onSubmitHandler}
+              underlayColor="#99d9f4">
+              <Text style={styles.buttonText}>Add Item</Text>
+            </TouchableHighlight>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </View>
   );
 };
