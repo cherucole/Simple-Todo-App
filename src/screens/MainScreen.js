@@ -24,10 +24,10 @@ const mainScreen = props => {
           />
         </View>
         {items.map(item => (
-          <View key={item.title} style={styles.item}>
+          <View key={item.id} style={styles.item}>
             <Text>{item.title}</Text>
             <Text>{item.description}</Text>
-            <Text>{item.time}</Text>
+            <Text>Due: {item.time}</Text>
           </View>
         ))}
       </View>

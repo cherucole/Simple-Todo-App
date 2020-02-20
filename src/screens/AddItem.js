@@ -16,6 +16,7 @@ import Colors from '../components/Colors';
 import BackButton from '../components/BackButton';
 import { addItem } from '../store/actions';
 import { useDispatch } from 'react-redux';
+import DatePicker from 'react-native-datepicker';
 
 const AddItem = props => {
   const [title, setTitle] = useState('');
@@ -25,7 +26,10 @@ const AddItem = props => {
   const dispatch = useDispatch();
 
   const onSubmitHandler = () => {
-    dispatch(addItem(title, description, time));
+    let id = Math.random()
+      .toString(36)
+      .substr(2, 5);
+    dispatch(addItem(id, title, description, time));
     props.navigation.goBack();
   };
   return (
@@ -62,13 +66,30 @@ const AddItem = props => {
               value={description}
               multiline={true}
             />
-            <TextInput
+
+            <DatePicker
               style={styles.input}
-              placeholder="Time"
-              placeholderTextColor="grey"
-              autoCapitalize="none"
-              onChangeText={text => setTime(text)}
-              value={time}
+              date={time}
+              mode="date"
+              placeholder="select date"
+              format="YYYY-MM-DD"
+              minDate="2020-02-21"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: 'absolute',
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0,
+                },
+                dateInput: {
+                  marginLeft: 36,
+                },
+              }}
+              onDateChange={date => {
+                setTime(date);
+              }}
             />
             <TouchableHighlight
               style={styles.button}
