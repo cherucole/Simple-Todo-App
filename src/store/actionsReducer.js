@@ -4,9 +4,9 @@ const initialState = {
   items: [
     {
       id: '349skdhis21',
-      title: 'Dummy Title',
-      description: 'Dummy Description',
-      time: 'Dummy Time',
+      title: 'Read on Destructuring',
+      description: 'Practice destructing on Scrimba',
+      time: '2020-02-21',
     },
   ],
 };

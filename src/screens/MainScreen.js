@@ -25,9 +25,9 @@ const mainScreen = props => {
         </View>
         {items.map(item => (
           <View key={item.id} style={styles.item}>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
-            <Text>Due: {item.time}</Text>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.description}>{item.description}</Text>
+            <Text style={styles.time}>{item.time}</Text>
           </View>
         ))}
       </View>
@@ -63,6 +63,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
     borderRadius: 20,
+  },
+  title: {
+    color: '#000000',
+    fontSize: 22,
+  },
+  description: {
+    color: '#546e7a',
+    fontSize: 18,
+    marginVertical: 5,
+  },
+  time: {
+    color: '#546e7a',
+    fontSize: 16,
+    // fontStyle: 'italic',
   },
 });
 
