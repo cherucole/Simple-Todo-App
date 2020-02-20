@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../components/Colors';
+import { deleteItem, doneItem } from '../store/actions';
 
 const mainScreen = props => {
   const items = useSelector(state => state.items.items);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -23,13 +26,28 @@ const mainScreen = props => {
             }}
           />
         </View>
-        {items.map(item => (
-          <View key={item.id} style={styles.item}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.time}>{item.time}</Text>
-          </View>
-        ))}
+        {items.length > 0 &&
+          items.map(item => (
+            <View key={item.id} style={styles.item}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.time}>{item.time}</Text>
+              <View style={styles.actions}>
+                <MaterialIcons
+                  name="delete"
+                  color="#b0bec5"
+                  size={32}
+                  onPress={() => dispatch(deleteItem(item.id))}
+                />
+                <Ionicons
+                  name="ios-done-all"
+                  color="#b0bec5"
+                  size={32}
+                  onPress={() => dispatch(doneItem(item.id))}
+                />
+              </View>
+            </View>
+          ))}
       </View>
     </>
   );
@@ -63,6 +81,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
     borderRadius: 20,
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
   },
   title: {
     color: '#000000',

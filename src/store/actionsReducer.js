@@ -1,4 +1,4 @@
-import { ADD_ITEM } from './actions';
+import { ADD_ITEM, DELETE_ITEM, COMPLETED_ITEM } from './actions';
 
 const initialState = {
   items: [
@@ -9,6 +9,7 @@ const initialState = {
       time: '2020-02-21',
     },
   ],
+  completedItems: [],
 };
 
 export const itemsReducer = (state = initialState, action) => {
@@ -22,6 +23,19 @@ export const itemsReducer = (state = initialState, action) => {
           description: action.description,
           time: action.time,
         }),
+      };
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.id),
+      };
+    case COMPLETED_ITEM:
+      let doneItem = state.items.filter(item => item.id === action.id);
+      return {
+        ...state,
+        completedItems: state.completedItems.concat(doneItem),
+        items: state.items.filter(item => item.id !== action.id),
       };
 
     default:

@@ -4,19 +4,20 @@ import StatusBarHeader from '../components/StatusBarHeader';
 import { useSelector } from 'react-redux';
 
 const Done = props => {
-  const items = useSelector(state => state.items.items);
+  const items = useSelector(state => state.items.completedItems);
 
   return (
     <>
       <StatusBarHeader name="Completed" />
       <View style={styles.container}>
-        {items.map(item => (
-          <View key={item.id} style={styles.item}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.time}>{item.time}</Text>
-          </View>
-        ))}
+        {items.length > 0 &&
+          items.map(item => (
+            <View key={item.id} style={styles.item}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.time}>{item.time}</Text>
+            </View>
+          ))}
       </View>
     </>
   );
