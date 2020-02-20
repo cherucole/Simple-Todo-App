@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,25 +17,12 @@ const mainScreen = props => {
     <>
       <StatusBarHeader name="My Planner" />
       <View style={styles.container}>
-        <RoundButton />
-        {/* <View style={styles.addButton}>
-          <TouchableHighlight
-            onPress={() => {
-              props.navigation.navigate('Add');
-            }}>
-            <Text style={styles.add}>+</Text>
-          </TouchableHighlight>
-        </View> */}
-        {/* <Ionicons
-          style={styles.addButton}
-          name="ios-add-circle"
-          color={Colors.primary}
-          size={60}
+        <TouchableWithoutFeedback
           onPress={() => {
             props.navigation.navigate('Add');
-          }}
-        /> */}
-
+          }}>
+          <RoundButton />
+        </TouchableWithoutFeedback>
         {items.length > 0 &&
           items.map(item => (
             <View key={item.id} style={styles.item}>

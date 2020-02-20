@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Colors from './Colors';
 
 const RoundButton = props => (
-  <View style={styles.button}>
+  <View style={styles.button} >
     <Text style={{ fontSize: 40, color: 'white' }}>+</Text>
   </View>
 );
