@@ -16,16 +16,16 @@ const mainScreen = props => {
     <>
       <StatusBarHeader name="My Planner" />
       <View style={styles.container}>
-        <View style={styles.button}>
-          <Ionicons name="ios-add" color="white" size={37} />
-          <Button
-            title="Add Items"
-            color="white"
-            onPress={() => {
-              props.navigation.navigate('Add');
-            }}
-          />
-        </View>
+        <Ionicons
+          style={styles.addButton}
+          name="ios-add-circle"
+          color={Colors.primary}
+          size={60}
+          onPress={() => {
+            props.navigation.navigate('Add');
+          }}
+        />
+
         {items.length > 0 &&
           items.map(item => (
             <View key={item.id} style={styles.item}>
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    paddingTop: 10,
   },
   item: {
     marginVertical: 10,
@@ -100,6 +101,18 @@ const styles = StyleSheet.create({
     color: '#546e7a',
     fontSize: 16,
     // fontStyle: 'italic',
+  },
+  addButton: {
+    position: 'absolute',
+    right: 20,
+    bottom: 10,
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+    shadowRadius: 6,
+    shadowOpacity: 0.6,
   },
 });
 
