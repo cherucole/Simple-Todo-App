@@ -1,9 +1,13 @@
 import { ADD_ITEM } from './actions';
 
 const initialState = {
-  title: 'This is a dummy title',
-  description: 'This is a dummy description',
-  time: 'Due on Thursday ',
+  items: [
+    {
+      title: 'Dummy Title',
+      description: 'Dummy Description',
+      time: 'Dummy Time',
+    },
+  ],
 };
 
 export const itemsReducer = (state = initialState, action) => {
@@ -11,9 +15,11 @@ export const itemsReducer = (state = initialState, action) => {
     case ADD_ITEM:
       return {
         ...state,
-        title: action.title,
-        description: action.description,
-        time: action.time,
+        items: state.items.concat({
+          title: action.title,
+          description: action.description,
+          time: action.time,
+        }),
       };
 
     default:

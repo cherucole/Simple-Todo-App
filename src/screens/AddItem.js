@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -14,13 +14,19 @@ import {
 import StatusBarHeader from '../components/StatusBarHeader';
 import Colors from '../components/Colors';
 import BackButton from '../components/BackButton';
+import { addItem } from '../store/actions';
+import { useDispatch } from 'react-redux';
 
 const AddItem = props => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [time, setTime] = useState('');
+
+  const dispatch = useDispatch();
+
   const onSubmitHandler = () => {
-    Alert.alert(title);
+    dispatch(addItem(title, description, time));
+    props.navigation.goBack();
   };
   return (
     <View style={styles.mainContainer}>
@@ -48,7 +54,7 @@ const AddItem = props => {
               value={title}
             />
             <TextInput
-              style={{...styles.input, ...{height: 160}}}
+              style={{ ...styles.input, ...{ height: 160 } }}
               placeholder="Item Description"
               placeholderTextColor="grey"
               autoCapitalize="none"
