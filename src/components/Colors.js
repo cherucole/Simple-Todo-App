@@ -1,7 +1,7 @@
 export default {
-  primary: '#cc0000',
-  background: '#297CFB',
-  accent: '#03A9F4',
+  primary: '#111025',
+  background: '#181832',
+  accent: '#6161F3',
   heading: '',
   textTitle: '',
   pinkShade: '#fc454e',

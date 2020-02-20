@@ -1,7 +1,7 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -17,7 +17,7 @@ const DashboardTabNavigator = createBottomTabNavigator(
       screen: Home,
       navigationOptions: {
         tabBarLabel: 'Home',
-        tabBarIcon: ({tintColor, focused}) => (
+        tabBarIcon: ({ tintColor, focused }) => (
           <Foundation name="home" color={tintColor} size={30} />
         ),
       },
@@ -26,7 +26,7 @@ const DashboardTabNavigator = createBottomTabNavigator(
       screen: Done,
       navigationOptions: {
         tabBarLabel: 'Categories',
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Ionicons name="md-done-all" color={tintColor} size={28} />
         ),
       },
@@ -35,14 +35,14 @@ const DashboardTabNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: 'red',
+      activeTintColor: '#6161F3',
       inactiveTintColor: 'grey',
       style: {
-        backgroundColor: '#F9F8FD',
+        backgroundColor: '#111025',
         borderTopWidth: 0,
-        shadowOffset: {width: 5, height: 3},
-        shadowColor: 'black',
-        shadowOpacity: 0.7,
+        shadowOffset: { width: 5, height: 3 },
+        shadowColor: '#6161F3',
+        shadowOpacity: 1,
         elevation: 5,
       },
     },

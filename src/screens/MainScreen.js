@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -7,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../components/Colors';
 import { deleteItem, doneItem } from '../store/actions';
+import RoundButton from '../components/RoundButton';
 
 const mainScreen = props => {
   const items = useSelector(state => state.items.items);
@@ -16,7 +17,16 @@ const mainScreen = props => {
     <>
       <StatusBarHeader name="My Planner" />
       <View style={styles.container}>
-        <Ionicons
+        <RoundButton />
+        {/* <View style={styles.addButton}>
+          <TouchableHighlight
+            onPress={() => {
+              props.navigation.navigate('Add');
+            }}>
+            <Text style={styles.add}>+</Text>
+          </TouchableHighlight>
+        </View> */}
+        {/* <Ionicons
           style={styles.addButton}
           name="ios-add-circle"
           color={Colors.primary}
@@ -24,7 +34,7 @@ const mainScreen = props => {
           onPress={() => {
             props.navigation.navigate('Add');
           }}
-        />
+        /> */}
 
         {items.length > 0 &&
           items.map(item => (
@@ -35,13 +45,13 @@ const mainScreen = props => {
               <View style={styles.actions}>
                 <MaterialIcons
                   name="delete"
-                  color="#b0bec5"
+                  color={Colors.primary}
                   size={32}
                   onPress={() => dispatch(deleteItem(item.id))}
                 />
                 <Ionicons
                   name="ios-done-all"
-                  color="#b0bec5"
+                  color={Colors.primary}
                   size={32}
                   onPress={() => dispatch(doneItem(item.id))}
                 />
@@ -58,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 10,
+    backgroundColor: Colors.primary,
   },
   item: {
     marginVertical: 10,
@@ -69,7 +80,7 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 0.26,
-    backgroundColor: 'white',
+    backgroundColor: Colors.accent,
     padding: 15,
     borderRadius: 10,
   },
@@ -89,30 +100,18 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   title: {
-    color: '#000000',
+    color: 'white',
     fontSize: 22,
   },
   description: {
-    color: '#546e7a',
+    color: Colors.primary,
     fontSize: 18,
     marginVertical: 5,
   },
   time: {
-    color: '#546e7a',
+    color: Colors.primary,
     fontSize: 16,
     // fontStyle: 'italic',
-  },
-  addButton: {
-    position: 'absolute',
-    right: 20,
-    bottom: 10,
-    shadowColor: 'black',
-    shadowOffset: {
-      height: 2,
-      width: 0,
-    },
-    shadowRadius: 6,
-    shadowOpacity: 0.6,
   },
 });
 

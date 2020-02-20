@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
 import { useSelector } from 'react-redux';
 
+import Colors from '../components/Colors';
+
 const Done = props => {
   const items = useSelector(state => state.items.completedItems);
 
@@ -28,6 +30,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    paddingTop: 10,
+    backgroundColor: Colors.primary,
   },
   item: {
     marginVertical: 10,
@@ -39,21 +43,36 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 0.26,
-    backgroundColor: 'white',
+    backgroundColor: Colors.accent,
     padding: 15,
     borderRadius: 10,
   },
+  button: {
+    flexDirection: 'row',
+    marginTop: 20,
+    height: 36,
+    backgroundColor: Colors.primary,
+    marginBottom: 10,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    borderRadius: 20,
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
+  },
   title: {
-    color: '#000000',
+    color: 'white',
     fontSize: 22,
   },
   description: {
-    color: '#546e7a',
+    color: Colors.primary,
     fontSize: 18,
     marginVertical: 5,
   },
   time: {
-    color: '#546e7a',
+    color: Colors.primary,
     fontSize: 16,
     // fontStyle: 'italic',
   },
