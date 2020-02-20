@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import StatusBarHeader from '../components/StatusBarHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,12 +17,11 @@ const mainScreen = props => {
     <>
       <StatusBarHeader name="My Planner" />
       <View style={styles.container}>
-        <TouchableWithoutFeedback
+        <RoundButton
           onPress={() => {
             props.navigation.navigate('Add');
-          }}>
-          <RoundButton />
-        </TouchableWithoutFeedback>
+          }}
+        />
         {items.length > 0 &&
           items.map(item => (
             <View key={item.id} style={styles.item}>

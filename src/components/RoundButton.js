@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Colors from './Colors';
 
 const RoundButton = props => (
-  <View style={styles.button} >
-    <Text style={{ fontSize: 40, color: 'white' }}>+</Text>
-  </View>
+  <TouchableWithoutFeedback onPress={props.onPress}>
+    <View style={styles.button}>
+      <Text style={styles.text}>+</Text>
+    </View>
+  </TouchableWithoutFeedback>
 );
 export default RoundButton;
 
@@ -27,5 +29,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 0.6,
+  },
+  text: {
+    fontSize: 40,
+    color: 'white',
   },
 });
