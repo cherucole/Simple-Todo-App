@@ -16,7 +16,7 @@
 
 ## View Tasks Screen Preview
 
-![Task Planner App](https://github.com/cherucole/Simple-Todo-App/blob/master/src/assets/taks.png?raw=true)
+![Task Planner App](https://github.com/cherucole/Simple-Todo-App/blob/master/src/assets/tasks.png?raw=true)
 
 ## Completed Tasks Screen Preview
 
